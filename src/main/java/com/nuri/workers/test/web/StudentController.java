@@ -16,16 +16,13 @@ import org.springframework.web.bind.annotation.RestController;
 import com.nuri.workers.test.entity.Student;
 import com.nuri.workers.test.service.StudentService;
 
+
+@RequiredArgsConstructor
 @RestController
 @RequestMapping("/student")
 public class StudentController {
 
     private final StudentService studentService;
-
-    @Autowired
-    public StudentController(StudentService studentService) {
-        this.studentService = studentService;
-    }
 
     @PostMapping
     public Student addStudent(@RequestBody String name, @RequestParam Long schoolId) {

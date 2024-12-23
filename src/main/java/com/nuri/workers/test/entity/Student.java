@@ -30,7 +30,7 @@ public class Student {
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    private School team;
+    private School school;
 
     public StudentDto toDto(){
         return StudentDto.builder()

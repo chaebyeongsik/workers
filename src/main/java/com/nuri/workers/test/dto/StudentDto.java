@@ -16,7 +16,7 @@ public class StudentDto {
     
     private Long id;
     private String name;
-    private School team;
+    private School school;
 
     public Student toEntity(){
         return Student.builder()
