@@ -40,7 +40,7 @@ public class SchoolService {
 
     public void deleteSchool(Long id) throws Exception {
         School school = schoolRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("## Invalid school Id:" + id));
-        schoolRepository.deleteById(school.getId());
+        schoolRepository.deleteById(school.getSchId());
     }
     
 }
