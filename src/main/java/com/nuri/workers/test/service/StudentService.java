@@ -37,7 +37,7 @@ public class StudentService {
     
     public StudentDto updateStudent(Long id, String name) {
         Student student = studentRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("Invalid student Id:" + id));
-        student.setStdName(name);
+        student.setName(name);
         return studentRepository.save(student).toDto();
     }
 

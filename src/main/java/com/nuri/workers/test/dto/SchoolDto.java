@@ -18,8 +18,8 @@ public class SchoolDto {
 
     public School toEntity(){
         return School.builder()
-            .schId(this.id)
-            .schName(this.name)
+            .id(this.id)
+            .name(this.name)
             .build();
     }
     

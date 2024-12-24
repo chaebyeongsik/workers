@@ -1,7 +1,7 @@
 package com.nuri.workers.test.dto;
 
-import com.nuri.workers.test.entity.Student;
 import com.nuri.workers.test.entity.School;
+import com.nuri.workers.test.entity.Student;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,8 +20,8 @@ public class StudentDto {
 
     public Student toEntity(){
         return Student.builder()
-            .stdId(this.id)
-            .stdName(this.name)
+            .id(this.id)
+            .name(this.name)
             .school(this.school)
             .build();
     }

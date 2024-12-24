@@ -2,13 +2,11 @@ package com.nuri.workers.test.entity;
 
 import com.nuri.workers.test.dto.StudentDto;
 
-import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -24,26 +22,23 @@ import lombok.Setter;
 @Entity
 public class Student {
 
-    public Student(String stdName) {
-        this.stdName = stdName;
+    public Student(String name) {
+        this.name = name;
     }
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long stdId;
+    private Long id;
 
-    @Column(name = "name", nullable = false, length = 100)
-    private String stdName;
+    private String name;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "school_id")
+    @ManyToOne(fetch = FetchType.EAGER)
     private School school;
 
     public StudentDto toDto(){
         return StudentDto.builder()
-            .id(this.stdId)
-            .name(this.stdName)
+            .id(this.id)
+            .name(this.name)
             .school(this.school)
             .build();
     }
