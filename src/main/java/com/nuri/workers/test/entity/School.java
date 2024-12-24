@@ -1,5 +1,7 @@
 package com.nuri.workers.test.entity;
 
+import com.nuri.workers.test.dto.SchoolDto;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -18,10 +20,23 @@ import lombok.Setter;
 @Builder
 @Entity
 public class School {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+    public School(String schName){
+        this.schName = schName;
+    }
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long schId;
+
+    @Column(name = "name", nullable = false, length = 100)
+    private String schName;
+
+    public SchoolDto toDto(){
+        return SchoolDto.builder()
+            .id(this.schId)
+            .name(this.schName)
+            .build();
+    }
 }

@@ -8,6 +8,7 @@ import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -22,20 +23,28 @@ import lombok.Setter;
 @Builder
 @Entity
 public class Student {
+
+    public Student(String stdName) {
+        this.stdName = stdName;
+    }
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @Column(name = "id")
+    private Long stdId;
 
-    @Column(nullable = false, length = 100)
-    private String name;
+    @Column(name = "name", nullable = false, length = 100)
+    private String stdName;
 
     @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "school_id")
     private School school;
 
     public StudentDto toDto(){
         return StudentDto.builder()
-            .id(this.id)
-            .name(this.name)
+            .id(this.stdId)
+            .name(this.stdName)
+            .school(this.school)
             .build();
     }
 

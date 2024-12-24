@@ -1,5 +1,7 @@
 package com.nuri.workers.test.dto;
 
+import com.nuri.workers.test.entity.School;
+
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -13,5 +15,12 @@ public class SchoolDto {
 
     private Long id;
     private String name;
+
+    public School toEntity(){
+        return School.builder()
+            .schId(this.id)
+            .schName(this.name)
+            .build();
+    }
     
 }

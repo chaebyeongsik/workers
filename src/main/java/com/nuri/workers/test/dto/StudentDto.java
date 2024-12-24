@@ -20,8 +20,9 @@ public class StudentDto {
 
     public Student toEntity(){
         return Student.builder()
-            .id(this.id)
-            .name(this.name)
+            .stdId(this.id)
+            .stdName(this.name)
+            .school(this.school)
             .build();
     }
 
