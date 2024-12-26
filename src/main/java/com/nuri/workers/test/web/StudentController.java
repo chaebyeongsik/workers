@@ -18,7 +18,6 @@ import com.nuri.workers.test.service.StudentService;
 
 import lombok.RequiredArgsConstructor;
 
-
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("/student")

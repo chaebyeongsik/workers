@@ -1,5 +1,6 @@
 package com.nuri.workers.test.dto;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.nuri.workers.test.entity.School;
 import com.nuri.workers.test.entity.Student;
 
@@ -16,6 +17,8 @@ public class StudentDto {
     
     private Long id;
     private String name;
+
+    @JsonIgnore
     private School school;
 
     public Student toEntity(){
